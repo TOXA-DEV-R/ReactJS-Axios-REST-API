@@ -4,6 +4,10 @@ import user from "../images/user.png";
 
 const ContactCard = (props) => {
   const { id, name, email } = props.contact;
+
+  const styleEdit = { color: "blue", marginTop: "7px" };
+  const styleTrash = { color: "red", marginTop: "7px", marginLeft: "10px" };
+
   return (
     <div className="item">
       <img className="ui avatar image" src={user} alt="user" />
@@ -15,16 +19,15 @@ const ContactCard = (props) => {
           <div>{email}</div>
         </Link>
       </div>
+
       <i
         className="trash alternate outline icon"
-        style={{ color: "red", marginTop: "7px", marginLeft: "10px" }}
-        onClick={() => props.clickHander(id)}
+        style={styleTrash}
+        onClick={() => props.deleteConactHandler(id)}
       ></i>
+
       <Link to={{ pathname: `/edit`, state: { contact: props.contact } }}>
-        <i
-          className="edit alternate outline icon"
-          style={{ color: "blue", marginTop: "7px" }}
-        ></i>
+        <i className="edit alternate outline icon" style={styleEdit}></i>
       </Link>
     </div>
   );
